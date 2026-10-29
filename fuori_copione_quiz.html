@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101525">
+<title>Fuori copione — Sfida didattica</title>
+<style>
+:root{--bg:#0b1020;--panel:#141c31;--panel2:#1b2640;--text:#f3f5ff;--muted:#aab5d0;--accent:#8ce0d0;--accent2:#c1a6ff;--gold:#ffd47a;--bad:#ff9caa;--good:#9ee6b1;--line:#2b3856}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at top,#1a2b46 0,#0b1020 55%);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button,input,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}
+.wrap{max-width:900px;margin:auto;padding:20px 16px 48px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 22px}.brand{font-weight:800;letter-spacing:.12em;font-size:.78rem;color:var(--accent)}.pill{border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 11px;font-size:.8rem}
+.hero{padding:26px 22px;border:1px solid #344362;border-radius:24px;background:linear-gradient(135deg,#1a2945,#141a30 65%,#282042);box-shadow:0 18px 60px #0003}
+.kicker{color:var(--accent);font-weight:800;font-size:.75rem;letter-spacing:.13em;text-transform:uppercase}h1{font-size:clamp(2.1rem,7vw,4.1rem);line-height:.98;letter-spacing:-.055em;margin:12px 0}h2{font-size:1.25rem;line-height:1.25;margin:0 0 10px}p{margin:8px 0;color:var(--muted)}.hero p{max-width:650px;font-size:1.02rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:20px}.stat{padding:12px;border-radius:14px;background:#ffffff0b;border:1px solid #ffffff12}.stat b{display:block;font-size:1.25rem}.stat span{color:var(--muted);font-size:.75rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.btn{border:0;border-radius:13px;padding:12px 17px;font-weight:750;min-height:46px;background:var(--accent);color:#10202a}.btn.secondary{background:#263451;color:var(--text);border:1px solid #3a496b}.btn:disabled{opacity:.45;cursor:not-allowed}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:16px}.progressline{height:8px;background:#26314a;border-radius:20px;overflow:hidden;margin:12px 0}.progressline span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}
+.meta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.82rem}.tag{color:var(--accent);font-size:.74rem;letter-spacing:.1em;font-weight:800;text-transform:uppercase}.qtitle{font-size:clamp(1.2rem,4vw,1.65rem);margin:10px 0 14px;line-height:1.25}
+.options{display:grid;gap:10px;margin:18px 0}.option{display:flex;gap:12px;text-align:left;align-items:flex-start;padding:14px;border:1px solid #354361;border-radius:14px;background:#19233a;color:var(--text);width:100%;min-height:52px}.option .letter{flex:0 0 28px;height:28px;display:grid;place-items:center;border-radius:9px;background:#2b3855;color:var(--accent);font-weight:800}.option.selected{border-color:var(--accent);background:#20364a}.option.correct{border-color:var(--good);background:#17382f}.option.wrong{border-color:var(--bad);background:#402431}
+textarea,input[type=text]{width:100%;background:#0f1729;border:1px solid #3a4967;border-radius:13px;color:var(--text);padding:14px;outline:none}textarea{min-height:135px;resize:vertical}textarea:focus,input:focus{border-color:var(--accent)}
+.feedback{border-radius:14px;padding:14px;margin-top:15px;background:#202b42;border:1px solid #3b4965}.feedback.good{border-color:#4b9271}.feedback.bad{border-color:#a95a6c}.feedback strong{display:block;margin-bottom:5px}.muted{color:var(--muted)}.hidden{display:none!important}.rubric{font-size:.88rem;color:var(--muted);padding-left:20px}
+.endgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.endbox{background:#1a2540;padding:16px;border-radius:14px}.endbox b{font-size:1.7rem;display:block}
+footer{text-align:center;color:#7785a3;font-size:.78rem;padding:28px 10px}
+@media(min-width:650px){.wrap{padding:28px 24px 55px}.hero{padding:36px}.panel{padding:26px}.options{grid-template-columns:1fr 1fr}.option{height:100%}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">LABORATORIO DI PENSIERO</div><div class="pill">15 prove · livello avanzato</div></div>
+  <section class="hero" id="intro">
+    <div class="kicker">Una sfida su verità, libertà e attenzione</div>
+    <h1>FUORI<br>COPIONE.</h1>
+    <p>Un percorso ispirato ai tuoi appunti su <em>The Truman Show</em>, le relazioni autentiche e i rischi dei social. Non basta ricordare le definizioni: dovrai collegare idee, riconoscere implicazioni e valutare situazioni nuove.</p>
+    <div class="stats"><div class="stat"><b>15</b><span>prove miste</span></div><div class="stat"><b>30 min</b><span>tempo indicativo</span></div><div class="stat"><b>100</b><span>punti massimi</span></div></div>
+    <div class="actions"><button class="btn" id="startBtn">Inizia la missione →</button><button class="btn secondary" id="howBtn">Come si gioca</button></div>
+    <div id="how" class="feedback hidden"><strong>Regole della missione</strong>Le prove a scelta multipla valgono 5 punti; quelle a risposta aperta fino a 10 punti in base alle parole-chiave e al ragionamento. Dopo ogni risposta vedrai un feedback e una spiegazione. Puoi avanzare solo dopo aver controllato la risposta. Il punteggio delle risposte aperte è un'indicazione automatica, non una valutazione scolastica perfetta.</div>
+  </section>
+
+  <section class="panel hidden" id="game">
+    <div class="meta"><span id="counter">PROVA 1 DI 15</span><span id="scoreLabel">0 punti</span></div>
+    <div class="progressline"><span id="bar"></span></div>
+    <div class="tag" id="category"></div>
+    <h2 class="qtitle" id="question"></h2>
+    <div id="scenario" class="muted"></div>
+    <div id="answerArea"></div>
+    <div class="actions"><button class="btn" id="checkBtn">Controlla risposta</button><button class="btn secondary hidden" id="nextBtn">Prossima prova →</button></div>
+    <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+  </section>
+
+  <section class="panel hidden" id="results">
+    <div class="kicker">Missione completata</div><h2 id="resultTitle">La tua valutazione</h2>
+    <p id="resultText"></p>
+    <div class="endgrid"><div class="endbox"><b id="finalScore">0/100</b><span class="muted">Punteggio</span></div><div class="endbox"><b id="accuracy">0%</b><span class="muted">Prove completate</span></div></div>
+    <div class="feedback"><strong>Tre idee da portare all'interrogazione</strong><ol><li>Una relazione autentica richiede sincerità, fiducia e rispetto dell'autonomia.</li><li>La libertà di Truman consiste nell'autodeterminazione e nella ricerca della verità, non nella certezza che tutto andrà bene.</li><li>I social possono influenzare attenzione e percezione di sé; le abitudini digitali si possono modificare con scelte consapevoli.</li></ol></div>
+    <div class="actions"><button class="btn" id="restartBtn">Ricomincia da capo</button><button class="btn secondary" id="reviewBtn">Rivedi le risposte</button></div>
+    <div id="review" class="hidden"></div>
+  </section>
+  <footer>Gioco didattico autonomo · Funziona offline dopo aver salvato il file · Nessun dato viene inviato online</footer>
+</div>
+<script>
+const questions = [
+{type:"mc",cat:"1 · Lettura critica",q:"Quale confronto tra Seahaven e i social network è più rigoroso?",s:"Nei tuoi appunti, Christof guida le scelte e le paure di Truman; le app raccolgono dati come preferenze, posizioni e ricerche.",opts:["Sono identici: entrambi controllano completamente ogni comportamento.","Possono orientare comportamenti e percezioni, ma non sono fenomeni identici e l'influenza non elimina automaticamente ogni scelta personale.","I social influenzano solo ciò che una persona compra, mai la sua immagine o attenzione.","Seahaven rappresenta la pressione degli amici, mentre gli algoritmi non usano dati personali."],a:1,why:"Il collegamento è un'analogia critica, non un'identità perfetta: il film mostra un controllo costruito e intenzionale, mentre le piattaforme possono profilare e influenzare scelte attraverso dati e raccomandazioni."},
+{type:"mc",cat:"2 · Relazioni autentiche",q:"Meryl recita un ruolo e il rapporto con Truman è guidato anche da interessi commerciali. Qual è il criterio più decisivo per definirlo non autentico?",opts:["Il fatto che i due abbiano opinioni diverse.","Il fatto che una relazione sia osservata da altre persone.","La presenza di secondi fini e di un copione che sostituisce la sincerità.","Il fatto che Truman non conosca ogni dettaglio della vita di Meryl."],a:2,why:"Il punto decisivo è che la relazione viene recitata e strumentalizzata: manca la sincerità e l'altra persona viene trattata come parte di un progetto, non come interlocutore libero."},
+{type:"open",cat:"3 · Argomentazione",q:"Spiega perché la fiducia non significa credere ciecamente a tutto ciò che dice un'altra persona.",s:"Nella risposta collega almeno due elementi tra sincerità, vulnerabilità, rispetto dell'autonomia e rischio di manipolazione.",keys:["sincerità","autonomia","vulnerabilità","manipolazione","fiducia"],model:"La fiducia permette di mostrarsi vulnerabili senza temere di essere manipolati, ma non richiede obbedienza cieca. Una relazione autentica si basa sulla sincerità e sul rispetto dell'autonomia: ciascuno può pensare con la propria testa, fare domande e mantenere la propria libertà.",why:"Una buona risposta distingue fiducia e obbedienza: fidarsi rende possibile l'apertura personale, mentre il rispetto dell'autonomia impedisce che il rapporto diventi controllo."},
+{type:"mc",cat:"4 · Libertà",q:"Truman attraversa la porta finale pur non sapendo con certezza che cosa lo aspetta. Quale interpretazione è più completa?",opts:["La libertà consiste nel poter eliminare ogni rischio prima di scegliere.","La libertà è soprattutto diventare indipendenti economicamente.","La libertà consiste nel rifiutare ogni relazione con gli altri.","La libertà è autodeterminarsi e cercare la verità anche accettando incertezza, possibilità di errore e sofferenza."],a:3,why:"Nei tuoi appunti, Truman conquista libertà di scelta, di conoscere la verità e di vivere esperienze reali. La vita autentica non garantisce una perfezione senza dolore."},
+{type:"mc",cat:"5 · Algoritmi",q:"Un'app suggerisce contenuti sempre più simili a quelli che una persona guarda. Quale conclusione è più prudente?",opts:["Il sistema può usare segnali sulle preferenze per personalizzare i contenuti e influenzare ciò che la persona vede, senza determinare ogni sua decisione.","La persona non possiede più alcuna capacità di scelta.","L'app conosce con certezza ogni desiderio futuro dell'utente.","La personalizzazione è impossibile se l'utente non pubblica fotografie."],a:0,why:"La profilazione può anticipare interessi e personalizzare ciò che viene mostrato, ma non equivale a conoscere con certezza ogni desiderio né a cancellare completamente l'autonomia."},
+{type:"open",cat:"6 · Caso pratico",q:"Una studentessa pubblica soltanto momenti perfetti perché teme il giudizio degli altri. Analizza il caso usando due concetti dei tuoi appunti e proponi una strategia concreta.",s:"Scrivi 3–5 frasi. Puoi collegare pressione sociale, immagine costruita, autenticità e uso consapevole dei social.",keys:["pressione sociale","giudizio","autenticità","immagine","notifiche","confronto","consapevole","strategia"],model:"La pressione sociale può spingere la studentessa a costruire un'immagine idealizzata invece di esprimersi autenticamente. Il confronto con vite apparentemente perfette può alimentare ansia e paura di essere esclusi. Può ridurre il controllo delle notifiche, scegliere con più attenzione cosa condividere e ricordare che i post non mostrano tutta la vita di una persona.",why:"Per un'analisi completa occorre spiegare il meccanismo, collegarlo ai concetti e proporre un'azione concreta, non limitarsi a dire che i social sono negativi."},
+{type:"mc",cat:"7 · Attenzione",q:"Perché lo scrolling infinito e i video brevi possono rendere più difficile mantenere a lungo l'attenzione?",opts:["Perché dimostrano che il cervello perde per sempre la capacità di concentrarsi.","Perché abituano a stimoli frequenti e gratificazioni immediate, rendendo meno attraenti attività più lente; l'effetto non è irreversibile.","Perché la concentrazione dipende esclusivamente dal numero di follower.","Perché ogni uso dello smartphone causa necessariamente dipendenza clinica."],a:1,why:"Gli appunti collegano gli stimoli rapidi alla ricerca di gratificazione immediata e alla difficoltà di tollerare la noia. Evita però affermazioni assolute: non significa che il danno sia permanente o che ogni utente sviluppi dipendenza."},
+{type:"mc",cat:"8 · Valutare le soluzioni",q:"Quale piano risponde meglio alla soluzione proposta nei tuoi appunti per allenare nuovamente l'attenzione?",opts:["Tenere tutte le notifiche attive per abituarsi a ignorarle.","Sostituire la lettura con video ancora più brevi.","Disattivare notifiche inutili, creare zone senza telefono e riprendere attività lente come la lettura.","Evitare ogni forma di tecnologia per sempre."],a:2,why:"Gli appunti suggeriscono piccoli cambiamenti realistici: ridurre interruzioni, lasciare il telefono fuori dalla camera da letto e recuperare attività che richiedono attenzione prolungata."},
+{type:"tf",cat:"9 · Vero o falso",q:"Nel ragionamento dei tuoi appunti, una relazione autentica rispetta l'autonomia dell'altra persona e sostiene la sua crescita, invece di controllarla per interesse personale.",a:true,why:"Il rispetto dell'autonomia è indicato esplicitamente come elemento di una relazione vera: non limita l'altro per tornaconto personale, ma ne sostiene la libertà."},
+{type:"tf",cat:"10 · Vero o falso",q:"La conclusione del film dimostra che una vita autentica è migliore perché garantisce a Truman una vita senza dolore, incertezza o fallimenti.",a:false,why:"La conclusione sostiene il contrario: Truman sceglie una vita vera proprio accettando che possa contenere dolore, incertezza ed errori, invece della perfezione artificiale di Seahaven."},
+{type:"open",cat:"11 · Collegamento",q:"Collega il tema delle telecamere invisibili alla pressione sociale. In che modo anche lo sguardo degli altri può diventare una forma di controllo?",s:"Costruisci una risposta con causa, conseguenza ed esempio.",keys:["giudizio","aspettative","conform","comportamento","immagine","scelte","autenticità"],model:"Lo sguardo degli altri può diventare un controllo invisibile quando una persona anticipa il giudizio e modifica il proprio comportamento per essere accettata. Come Truman si muove dentro un mondo costruito, chi teme il giudizio può recitare un ruolo o conformarsi alle aspettative, rinunciando a esprimere la propria identità.",why:"Il collegamento più forte mostra il meccanismo del controllo interiorizzato: non serve una telecamera fisica se il timore del giudizio guida continuamente le scelte."},
+{type:"mc",cat:"12 · Ragionamento",q:"Un amico dice: «Se una relazione è autentica, non dovremmo mai litigare né avere segreti». Qual è la critica migliore?",opts:["È corretto: l'autenticità richiede accordo totale e accesso a ogni dettaglio personale.","È sbagliato solo perché le relazioni autentiche devono essere sempre divertenti.","È corretto se la relazione dura da molto tempo.","È una conclusione eccessiva: sincerità e fiducia non eliminano i disaccordi né cancellano il diritto all'autonomia e alla riservatezza."],a:3,why:"Autenticità non significa fusione totale o assenza di conflitti. Significa poter comunicare sinceramente, rispettare i confini e non manipolare l'altra persona."},
+{type:"open",cat:"13 · Decisione consapevole",q:"Progetta tre regole realistiche per usare i social in modo più consapevole senza doverli eliminare del tutto. Spiega brevemente perché funzionerebbero.",s:"Le regole devono essere concrete e collegate ai rischi citati negli appunti.",keys:["notifiche","limite","tempo","sonno","confronto","lettura","pausa","consapevole","camera da letto"],model:"Posso disattivare le notifiche non essenziali per ridurre le interruzioni, lasciare il telefono fuori dalla camera da letto per proteggere il sonno e stabilire momenti senza scrolling durante lo studio. Posso anche ricordare che i post mostrano una parte selezionata della vita degli altri. Sono regole realistiche perché modificano le abitudini senza richiedere di eliminare completamente la tecnologia.",why:"Le regole più efficaci sono specifiche, attuabili e collegate a un problema: distrazioni, sonno o confronto sociale. Una semplice promessa come «userò meno il telefono» è meno verificabile."},
+{type:"mc",cat:"14 · Distinguere i concetti",q:"Quale affermazione distingue correttamente libertà e perfezione?",opts:["Essere liberi significa poter scegliere anche quando non esiste una soluzione perfetta e si possono commettere errori.","Essere liberi significa ottenere sempre il risultato desiderato.","Una vita autentica è libera solo se non si provano emozioni negative.","La perfezione esteriore dimostra che una persona è autonoma."],a:0,why:"La libertà riguarda la possibilità di scegliere e autodeterminarsi; non garantisce risultati perfetti. Gli errori e l'incertezza fanno parte dell'esperienza reale."},
+{type:"open",cat:"15 · Mini-interrogazione finale",q:"Rispondi come all'interrogazione: qual è il messaggio comune che puoi ricavare da The Truman Show e dalla riflessione sui social network?",s:"Scrivi 4–6 frasi. Collega almeno tre concetti e formula una conclusione personale argomentata.",keys:["libertà","verità","autonomia","social","algoritmi","pressione","autenticità","scelta","attenzione","consapevole"],model:"The Truman Show mostra quanto un ambiente costruito possa condizionare la percezione della realtà e le scelte di una persona. I social non sono uguali a Seahaven, ma algoritmi, profilazione e pressione del giudizio possono influenzare ciò che vediamo e l'immagine che mostriamo. Per questo sono importanti la ricerca della verità, l'autonomia e le relazioni sincere. L'obiettivo non è rifiutare ogni tecnologia, ma usarla consapevolmente senza lasciare che decida al posto nostro.",why:"La risposta finale deve unire film e realtà senza confonderli: un buon collegamento spiega sia le somiglianze sia i limiti dell'analogia, poi propone una conclusione ragionata."}
+];
+let idx=0, score=0, answered=0, locked=false, history=[];
+const $=id=>document.getElementById(id);
+$("howBtn").onclick=()=> $("how").classList.toggle("hidden");
+$("startBtn").onclick=()=>{$("intro").classList.add("hidden");$("game").classList.remove("hidden");render();window.scrollTo({top:0,behavior:"smooth"});};
+function render(){
+ const q=questions[idx];locked=false;
+ $("counter").textContent=`PROVA ${idx+1} DI ${questions.length}`;
+ $("scoreLabel").textContent=`${score} punti`;
+ $("bar").style.width=`${idx/questions.length*100}%`;
+ $("category").textContent=q.cat;
+ $("question").textContent=q.q;
+ $("scenario").textContent=q.s||"";
+ $("answerArea").innerHTML="";
+ $("feedback").className="feedback hidden";$("feedback").innerHTML="";
+ $("checkBtn").classList.remove("hidden");$("checkBtn").disabled=false;
+ $("nextBtn").classList.add("hidden");
+ if(q.type==="mc"||q.type==="tf"){
+   const opts=q.type==="tf"?[{t:"Vero",i:0},{t:"Falso",i:1}]:q.opts.map((t,i)=>({t,i}));
+   const div=document.createElement("div");div.className="options";
+   opts.forEach((o,i)=>{const b=document.createElement("button");b.className="option";b.innerHTML=`<span class="letter">${q.type==="tf"?(i===0?"V":"F"):String.fromCharCode(65+i)}</span><span>${escapeHtml(o.t)}</span>`;b.onclick=()=>{if(locked)return;div.querySelectorAll("button").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");b.dataset.choice=o.i;};div.appendChild(b);});
+   $("answerArea").appendChild(div);
+ }else{
+   const ta=document.createElement("textarea");ta.id="openAnswer";ta.placeholder="Scrivi qui la tua risposta, con parole tue…";ta.setAttribute("aria-label","La tua risposta");$("answerArea").appendChild(ta);
+   const hint=document.createElement("p");hint.textContent="Consiglio: sviluppa il ragionamento, non limitarti a elencare parole chiave.";hint.className="muted";$("answerArea").appendChild(hint);
+ }
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+$("checkBtn").onclick=()=>{
+ if(locked)return;
+ const q=questions[idx];let earned=0,feedback="",response="";
+ if(q.type==="mc"||q.type==="tf"){
+   const selected=$("answerArea").querySelector(".option.selected");
+   if(!selected){alert("Scegli una risposta prima di continuare.");return;}
+   const choice=Number(selected.dataset.choice);
+   const correct=q.type==="tf"?(q.a?0:1):q.a;
+   const ok=choice===correct;earned=ok?5:0;
+   $("answerArea").querySelectorAll(".option").forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add("correct");if(i===choice&&!ok)b.classList.add("wrong");});
+   response=q.type==="tf"?(choice===0?"Vero":"Falso"):q.opts[choice];
+   feedback=`<strong>${ok?"Risposta corretta · +5 punti":"Risposta non corretta · +0 punti"}</strong>${escapeHtml(q.why)}`;
+ }else{
+   const text=$("openAnswer").value.trim();
+   if(text.length<25){alert("Prova a sviluppare un po' di più la risposta (almeno una frase completa).");return;}
+   response=text;
+   const lower=text.toLocaleLowerCase("it");
+   const found=q.keys.filter(k=>lower.includes(k));
+   const lengthBonus=text.split(/\s+/).filter(Boolean).length>=45?2:0;
+   earned=Math.min(10,Math.round(found.length/q.keys.length*8)+lengthBonus);
+   const missed=q.keys.filter(k=>!lower.includes(k));
+   feedback=`<strong>Valutazione automatica indicativa · +${earned} punti su 10</strong>Hai usato ${found.length} collegamenti riconosciuti su ${q.keys.length}. ${missed.length?`Prova a considerare anche: ${escapeHtml(missed.slice(0,4).join(", "))}. `:"Hai toccato tutti i concetti-chiave previsti. "} <br><br><strong>Un esempio di risposta ben sviluppata</strong><br>${escapeHtml(q.model)}<br><br><strong>Perché conta</strong><br>${escapeHtml(q.why)}`;
+ }
+ score+=earned;answered++;history.push({q,response,earned,feedback});locked=true;
+ $("scoreLabel").textContent=`${score} punti`;
+ $("bar").style.width=`${(idx+1)/questions.length*100}%`;
+ $("feedback").innerHTML=feedback;$("feedback").className="feedback "+(earned>0?"good":"bad");
+ $("checkBtn").classList.add("hidden");$("nextBtn").classList.remove("hidden");
+ $("nextBtn").textContent=idx===questions.length-1?"Vedi il risultato →":"Prossima prova →";
+ $("nextBtn").focus();
+};
+$("nextBtn").onclick=()=>{if(idx<questions.length-1){idx++;render();$("game").scrollIntoView({behavior:"smooth",block:"start"});}else{showResults();}};
+function showResults(){
+ $("game").classList.add("hidden");$("results").classList.remove("hidden");
+ const max=questions.reduce((sum,q)=>sum+(q.type==="open"?10:5),0);
+ const percent=Math.round(score/max*100);
+ $("finalScore").textContent=`${score}/${max}`;
+ $("accuracy").textContent=`${answered}/${questions.length}`;
+ $("resultTitle").textContent=percent>=85?"Ottima padronanza":percent>=65?"Buona base, approfondisci":"La missione è un punto di partenza";
+ $("resultText").textContent=`Hai completato tutte le prove e ottenuto circa il ${percent}% dei punti disponibili. Le risposte aperte sono valutate automaticamente tramite parole-chiave e lunghezza: leggi i feedback e gli esempi, perché la qualità del ragionamento può essere migliore o peggiore di quanto rilevato dal sistema.`;
+ $("bar").style.width="100%";window.scrollTo({top:0,behavior:"smooth"});
+}
+$("restartBtn").onclick=()=>{idx=0;score=0;answered=0;history=[];$("results").classList.add("hidden");$("intro").classList.remove("hidden");$("game").classList.add("hidden");$("review").classList.add("hidden");window.scrollTo({top:0,behavior:"smooth"});};
+$("reviewBtn").onclick=()=>{
+ const div=$("review");div.classList.toggle("hidden");
+ if(!div.dataset.built){div.innerHTML="<h2>Riepilogo delle prove</h2>"+history.map((h,i)=>`<div class="feedback"><strong>${i+1}. ${escapeHtml(h.q.q)} · ${h.earned} punti</strong><p><b>La tua risposta:</b> ${escapeHtml(h.response)}</p><p>${h.feedback}</p></div>`).join("");div.dataset.built="1";}
+};
+</script>
+</body>
+</html>
